@@ -1,0 +1,68 @@
+﻿@model FinalProject.Models.ViewModels.LaptopByFilterViewModel;
+<form method="post" class="mb-4">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <label asp-for="BrandChoice"></label>
+            @Html.DropDownListFor(x => Model.BrandChoice, new SelectList(Model.Brands, "Id", "Name"), new { @class = "form-select" })
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <label asp-for="MinBudget" class="form-label"></label>
+            <input asp-for="MinBudget" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="MaxBudget" class="form-label"></label>
+            <input asp-for="MaxBudget" class="form-control" />
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <label asp-for="MinYear" class="form-label"></label>
+            <input asp-for="MinYear" class="form-control" />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="MaxYear" class="form-label"></label>
+            <input asp-for="MaxYear" class="form-control" />
+        </div>
+
+    </div>
+
+    <input type="submit" class="btn btn-primary mt-4" />
+
+</form>
+@if(Model.Display == true){
+
+    @if(Model.ResultLaptops.Count == 0){
+        <h1>No Resulting Laptops, Sorry ;(</h1>
+    }
+    else{
+        <h1> Resulting Laptops</h1>
+        <div class="container">
+            <table class="table">
+                <tdead>
+                    <tr>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Id</th>
+                    </tr>
+                </tdead>
+                @foreach (var laptop in Model.ResultLaptops)
+                {
+                    <tbody>
+                        <tr>
+                            <td>@laptop.Brand.Name</td>
+                            <td>@laptop.Model</td>
+                            <td>@laptop.Price</td>
+                            <td>@laptop.Year</td>
+                            <td>@laptop.Id</td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+    }
+}

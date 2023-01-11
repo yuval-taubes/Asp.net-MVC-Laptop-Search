@@ -2,12 +2,19 @@
 {
     public class LaptopByBrandOrderingViewModel
     {
-        public int BrandChoice { get; set; } = new();
+        public int BrandChoice { get; set; }
 
-        public List<Brand> Brands { get; set; }
+        public List<Brand> Brands { get; set; } = new();
 
-        //public static List<string> OrderingChoices() { "Order by Year Ascending", "Order by Year Desending"};
-
+        public List<string> OrderingChoices = new List<string>()
+        {
+            "Order By Price Ascending",
+            "Order By Price Descending",
+            "Order By Year Ascending",
+            "Order By Year Descending"
+        };
         public string OrderChoice { get; set; }
+
+        public List<Laptop> ResultLaptops { get; set; } = new();
     }
 }
