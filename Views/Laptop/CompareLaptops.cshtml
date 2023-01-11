@@ -1,0 +1,54 @@
+﻿@model FinalProject.Models.ViewModels.CompareLaptopViewModel
+
+<form method="post">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            @Html.DropDownListFor(x => Model.Laptop1Id, new SelectList(Model.Laptops, "Id", "Model"))
+
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownListFor(x => Model.Laptop2Id, new SelectList(Model.Laptops, "Id", "Model"))
+
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary mt-2 mb-4 w" />
+
+</form>
+
+@if (Model.Laptop1Id != 0 && Model.Laptop2Id != 0)
+{
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Price ($)</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Id</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>@Model.Laptop1.Brand.Name</td>
+                    <td>@Model.Laptop1.Model</td>
+                    <td>@Model.Laptop1.Price</td>
+                    <td>@Model.Laptop1.Year</td>
+                    <td>@Model.Laptop1.Id</td>
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <td>@Model.Laptop2.Brand.Name</td>
+                    <td>@Model.Laptop2.Model</td>
+                    <td>@Model.Laptop2.Price</td>
+                    <td>@Model.Laptop2.Year</td>
+                    <td>@Model.Laptop2.Id</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+}

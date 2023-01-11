@@ -1,0 +1,15 @@
+﻿@model FinalProject.Models.ViewModels.LaptopByBrandOrderingViewModel
+<form method="post">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            @Html.DropDownListFor(x => Model.BrandChoice, new SelectList(Model.Brands, "Id", "Name"))
+
+        </div>
+        <div class="col-md-6">
+            @*@Html.DropDownListFor(x => Model.OrderChoice, new SelectList(Model.OrderingChoices))*@
+
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary mt-2 mb-4 w" />
+
+</form>
