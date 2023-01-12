@@ -1,4 +1,6 @@
-﻿namespace FinalProject.Models
+﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
+
+namespace FinalProject.Models
 {
     public class Database
     {
@@ -121,6 +123,28 @@
             #endregion Laptops
 
 
+        }
+        private int CreateNextIdBrand()
+        {
+            int nextId = Brands.Max(x => x.Id);
+            nextId++;
+            return nextId;
+        }
+        private int CreateNextIdLaptop()
+        {
+            int nextId = Laptops.Max(x => x.Id);
+            nextId++;
+            return nextId;
+        }
+        public void CreateBrand(string name)
+        {
+            Brand temp = new Brand(CreateNextIdBrand(), name);
+            Brands.Add(temp);
+        }
+        public void CreateLaptop(string name, int brandId, int price, int year)
+        {
+            Brand brand = Brands.FirstOrDefault(x => x.Id == brandId);
+            Laptop temp = new Laptop(CreateNextIdLaptop(), name, brand, price, year);
         }
     }
 }

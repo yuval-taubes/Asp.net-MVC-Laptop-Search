@@ -1,6 +1,7 @@
 ﻿using FinalProject.Models;
 using FinalProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics.X86;
 
 namespace FinalProject.Controllers
@@ -102,5 +103,11 @@ namespace FinalProject.Controllers
             vm.ResultLaptops = result;
             return View(vm);
         }
+        public IActionResult LaptopsByBrand()
+        {
+            IEnumerable<IGrouping<Brand, Laptop>> result = Database.Laptops.GroupBy(x => x.Brand, x => x);
+            return View(result);
+        }
+
     }
 }
