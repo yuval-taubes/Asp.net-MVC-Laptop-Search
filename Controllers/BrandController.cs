@@ -108,6 +108,16 @@ namespace FinalProject.Controllers
             IEnumerable<IGrouping<Brand, Laptop>> result = Database.Laptops.GroupBy(x => x.Brand, x => x);
             return View(result);
         }
-
+        public IActionResult CreateBrand()
+        {
+            CreateBrandViewModel vm = new CreateBrandViewModel();
+            return View(vm);
+        }
+        [HttpPost]
+        public IActionResult CreateBrand(CreateBrandViewModel vm)
+        {
+            Database.CreateBrand(vm.Name);
+            return View(vm);
+        }
     }
 }

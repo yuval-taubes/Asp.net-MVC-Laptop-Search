@@ -145,6 +145,7 @@ namespace FinalProject.Models
         {
             Brand brand = Brands.FirstOrDefault(x => x.Id == brandId);
             Laptop temp = new Laptop(CreateNextIdLaptop(), name, brand, price, year);
+            Laptops.Add(temp);
         }
     }
 }

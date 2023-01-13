@@ -12,24 +12,13 @@ namespace FinalProject.Controllers
         }
         public IActionResult ExpensiveLaptop()
         {
-            List<Laptop> sortedByPrice = Database.Laptops.OrderByDescending(x => x.Price).ToList();
-            List<Laptop> result = new List<Laptop>()
-            {
-                sortedByPrice[0],
-                sortedByPrice[1]
-            };
-            return View(result);
+            List<Laptop> sortedByPrice = Database.Laptops.OrderByDescending(x => x.Price).Take(2).ToList();
+            return View(sortedByPrice);
         }
         public IActionResult CheapestLaptop()
         {
-            List<Laptop> sortedByPrice = Database.Laptops.OrderByDescending(x => x.Price).ToList();
-            List<Laptop> result = new List<Laptop>()
-            {
-                sortedByPrice[0],
-                sortedByPrice[1],
-                sortedByPrice[2]
-            };
-            return View(result);
+            List<Laptop> sortedByPrice = Database.Laptops.OrderBy(x => x.Price).Take(3).ToList();
+            return View(sortedByPrice);
         }
         public IActionResult LaptopInBudget()
         {
@@ -47,7 +36,7 @@ namespace FinalProject.Controllers
 
 
         public IActionResult CompareLaptops()
-        {   
+        {
             CompareLaptopViewModel vm = new CompareLaptopViewModel();
             vm.Laptops = Database.Laptops;
             return View(vm);
@@ -60,6 +49,21 @@ namespace FinalProject.Controllers
             vm.Laptop1 = Database.Laptops.FirstOrDefault(x => x.Id == vm.Laptop1Id);
             vm.Laptop2 = Database.Laptops.FirstOrDefault(x => x.Id == vm.Laptop2Id);
 
+            return View(vm);
+        }
+
+        public IActionResult CreateLaptop()
+        {
+            CreateLaptopViewModel vm = new CreateLaptopViewModel();
+            vm.Brands = Database.Brands;
+            return View(vm);
+        }
+        [HttpPost]
+        public IActionResult CreateLaptop(CreateLaptopViewModel vm)
+        {
+            vm.Brands = Database.Brands;
+            Database.CreateLaptop(vm.Model, vm.BrandChoice, vm.Price, vm.Year);
+            vm.DisplaySuccess = true;
             return View(vm);
         }
     }
