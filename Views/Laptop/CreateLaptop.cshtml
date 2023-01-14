@@ -4,7 +4,7 @@
     <div class="row mt-4">
         <div class="col-md-6">
             <label asp-for="Model" class="form-label"></label>
-            <input asp-for="Model" class="form-control" />
+            <input asp-for="Model" class="form-control" required />
         </div>
         <div class="col-md-6">
             <label asp-for="BrandChoice"></label>
@@ -14,13 +14,12 @@
     <div class="row mt-4">
         <div class="col-md-6">
             <label asp-for="Price" class="form-label"></label>
-            <input asp-for="Price" class="form-control" />
+            <input asp-for="Price" class="form-control" required />
         </div>
         <div class="col-md-6">
             <label asp-for="Year" class="form-label"></label>
-            <input asp-for="Year" class="form-control" />
+            <input asp-for="Year" class="form-control" required />
         </div>
-
     </div>
 
     <input type="submit" class="btn btn-primary mt-4" />

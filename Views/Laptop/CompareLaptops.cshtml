@@ -3,11 +3,11 @@
 <form method="post">
     <div class="row mt-4">
         <div class="col-md-6">
-            @Html.DropDownListFor(x => Model.Laptop1Id, new SelectList(Model.Laptops, "Id", "Model"))
+            @Html.DropDownListFor(x => Model.Laptop1Id, new SelectList(Model.Laptops, "Id", "Model"), new { @class = "form-select mt-1" })
 
         </div>
         <div class="col-md-6">
-            @Html.DropDownListFor(x => Model.Laptop2Id, new SelectList(Model.Laptops, "Id", "Model"))
+            @Html.DropDownListFor(x => Model.Laptop2Id, new SelectList(Model.Laptops, "Id", "Model"), new { @class = "form-select mt-1" })
 
         </div>
     </div>
