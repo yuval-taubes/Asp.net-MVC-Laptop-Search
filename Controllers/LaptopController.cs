@@ -46,6 +46,7 @@ namespace FinalProject.Controllers
         public IActionResult CompareLaptops(CompareLaptopViewModel vm)
         {
             vm.Laptops = Database.Laptops;
+            //it says it might be null, but it wont be as its a dropdown list, meaning only allowed values will be selected
             vm.Laptop1 = Database.Laptops.FirstOrDefault(x => x.Id == vm.Laptop1Id);
             vm.Laptop2 = Database.Laptops.FirstOrDefault(x => x.Id == vm.Laptop2Id);
 
